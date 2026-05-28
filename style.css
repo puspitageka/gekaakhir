@@ -48,6 +48,13 @@ body{
   color:#b30000;
 }
 
+/* AUTH AREA FIX */
+#authArea{
+  display:flex;
+  align-items:center;
+}
+
+/* LOGIN BUTTON */
 .login-btn{
   background:red;
   color:yellow;
@@ -55,6 +62,13 @@ body{
   padding:12px 25px;
   border-radius:30px;
   font-weight:bold;
+  border:2px solid red;
+  transition:0.3s;
+}
+
+.login-btn:hover{
+  background:yellow;
+  color:red;
 }
 
 /* HERO */
