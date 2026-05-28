@@ -1,26 +1,51 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
-  <title>Register</title>
-  <link rel="stylesheet" href="auth.css">
+
+  <meta charset="UTF-8">
+
+  <title>Daftar</title>
+
+  <link rel="stylesheet"
+  href="login.css">
+
 </head>
+
 <body>
 
-<div class="container">
+<div class="login-container">
+
+  <h2>Daftar disini</h2>
+
   <form id="registerForm">
 
-    <h2>Daftar</h2>
+    <input
+    type="text"
+    id="username"
+    placeholder="Username yang kalcer apa ya"
+    required>
 
-    <input type="text" name="username" placeholder="Username" required>
+    <input
+    type="email"
+    id="email"
+    placeholder="Email kamu"
+    required>
 
-    <input type="email" name="email" placeholder="Email" required>
+    <input
+    type="password"
+    id="password"
+    placeholder="Password yang ngerahasia banget"
+    required>
 
-    <input type="password" name="password" placeholder="Password" required>
-
-    <button type="submit">Daftar</button>
+    <button type="submit">
+      Daftar nih
+    </button>
 
   </form>
+
 </div>
-  <script src="auth.js"></script>
+
+<script src="login.js"></script>
+
 </body>
 </html>
