@@ -1,159 +1,36 @@
-// LOGIN
-
-const loginForm =
-document.getElementById("loginForm");
-
-if(loginForm){
-
-  loginForm.addEventListener(
-  "submit",
-
-  function(e){
-
+document.getElementById("loginForm").addEventListener("submit", async function(e) {
     e.preventDefault();
 
-    const username =
-    document.getElementById("username").value;
+    const username = document.getElementById("username").value.trim();
+    const password = document.getElementById("password").value.trim();
 
-    const password =
-    document.getElementById("password").value;
+    const res = await fetch("https://herisusanta.my.id/javalogin/api/auth.php", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded"
+        },
+        body: `action=login&username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}`
+    });
 
-    const savedUser =
-    JSON.parse(
-      localStorage.getItem("registeredUser")
-    );
+    const data = await res.json();
 
-    if(
+    if (data.status === "success") {
+        // simpan username
+            localStorage.setItem("username", data.username);
+            window.location.href = "../index.html";
+         
+    // } else {
+    //     document.getElementById("message").innerText = "Username / Password salah";alert("Login gagal");
+    // }
+    
+    } else {
+    const alertBox = document.getElementById("alertBox");
+    alertBox.innerText = "Username atau Password salah, silahkan coba lagi";
+    alertBox.style.display = "block";
 
-      (username === "heri" &&
-      password === "123")
-
-      ||
-
-      (
-
-        savedUser &&
-        username === savedUser.username &&
-        password === savedUser.password
-
-      )
-
-    ){
-
-      localStorage.setItem(
-        "loggedInUser",
-        username
-      );
-
-      alert("Yey, login berhasil!");
-
-      window.location.href =
-      "../index.html";
-
-    }else{
-
-      alert(
-        "WADUH! Username atau password salah!"
-      );
-
-    }
-
-  });
-
-}
-
-// REGISTER
-
-const registerForm =
-document.getElementById("registerForm");
-
-if(registerForm){
-
-  registerForm.addEventListener(
-  "submit",
-
-  function(e){
-
-    e.preventDefault();
-
-    const username =
-    document.getElementById("username").value;
-
-    const email =
-    document.getElementById("email").value;
-
-    const password =
-    document.getElementById("password").value;
-
-    localStorage.setItem(
-
-      "registeredUser",
-
-      JSON.stringify({
-
-        username,
-        email,
-        password
-
-      })
-
-    );
-
-    alert("Pendaftaran berhasil! Selamat datang");
-
-    window.location.href =
-    "login.html";
-
-  });
-
-}
-
-// FORGOT PASSWORD
-
-const forgotForm =
-document.getElementById("forgotForm");
-
-if(forgotForm){
-
-  forgotForm.addEventListener(
-  "submit",
-
-  function(e){
-
-    e.preventDefault();
-
-    const username =
-    document.getElementById(
-      "forgotUsername"
-    ).value;
-
-    const savedUser =
-    JSON.parse(
-      localStorage.getItem(
-        "registeredUser"
-      )
-    );
-
-    if(
-
-      savedUser &&
-      username === savedUser.username
-
-    ){
-
-      alert(
-        "Password kamu adalah: " +
-        savedUser.password
-      );
-
-    }else{
-
-      alert(
-        "Username tidak ditemukan!"
-      );
-
-    }
-
-  });
-
-}
+    setTimeout(() => {
+        alertBox.style.display = "none";
+    }, 3000);
+} 
+   
+});
