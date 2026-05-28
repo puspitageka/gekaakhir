@@ -1,22 +1,39 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
-  <title>Lupa Password</title>
-  <link rel="stylesheet" href="auth.css">
+
+  <meta charset="UTF-8">
+
+  <title>Lupa Password Ya</title>
+
+  <link rel="stylesheet"
+  href="login.css">
+
 </head>
+
 <body>
 
-<div class="container">
+<div class="login-container">
+
+  <h2>Lupa Password Ya</h2>
+
   <form id="forgotForm">
 
-    <h2>Reset Password</h2>
+    <input
+    type="text"
+    id="forgotUsername"
+    placeholder="Masukkan username kamu deh"
+    required>
 
-    <input type="email" name="email" placeholder="Masukkan Email">
-
-    <button type="submit">Kirim Reset</button>
+    <button type="submit">
+      Cek Passwordnya Apa
+    </button>
 
   </form>
+
 </div>
-  <script src="auth.js"></script>
+
+<script src="login.js"></script>
+
 </body>
 </html>
