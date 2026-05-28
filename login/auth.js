@@ -1,3 +1,9 @@
+// AKUN DEFAULT
+
+const defaultUsername = "heri";
+const defaultPassword = "123";
+
+
 // REGISTER
 
 const registerForm = document.getElementById("registerForm");
@@ -25,6 +31,7 @@ if(registerForm){
 
 }
 
+
 // LOGIN
 
 const loginForm = document.getElementById("loginForm");
@@ -47,9 +54,22 @@ if(loginForm){
     const savedPassword =
       localStorage.getItem("password");
 
+    // LOGIN DEFAULT ATAU AKUN REGISTER
+
     if(
-      username === savedUsername &&
-      password === savedPassword
+
+      (
+        username === defaultUsername &&
+        password === defaultPassword
+      )
+
+      ||
+
+      (
+        username === savedUsername &&
+        password === savedPassword
+      )
+
     ){
 
       alert("Login berhasil!");
@@ -65,6 +85,7 @@ if(loginForm){
   });
 
 }
+
 
 // FORGOT PASSWORD
 
